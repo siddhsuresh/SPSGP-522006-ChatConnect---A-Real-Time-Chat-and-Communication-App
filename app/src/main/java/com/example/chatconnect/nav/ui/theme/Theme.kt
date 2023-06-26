@@ -1,8 +1,9 @@
-package com.example.chatconnect.ui.theme
+package com.example.chatconnect.nav.ui.theme
 
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+//import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -61,8 +62,8 @@ fun ChatConnectTheme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
+//        colorScheme = colorScheme,
+//        typography = Typography,
         content = content
     )
 }
