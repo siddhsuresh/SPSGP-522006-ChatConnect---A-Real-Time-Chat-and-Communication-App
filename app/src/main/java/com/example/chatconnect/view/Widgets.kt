@@ -2,12 +2,15 @@ package com.example.chatconnect.view
 
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -17,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
@@ -28,22 +32,30 @@ import androidx.compose.ui.unit.sp
 fun Title(title: String) {
     Text(
         text = title,
-        fontSize = 30.sp,
+        fontSize = 40.sp,
         fontWeight = FontWeight.Bold,
-        modifier = Modifier.fillMaxHeight(0.5f)
+        color= Color(242, 252, 138),
+        modifier = Modifier.fillMaxHeight(0.3f)
     )
 }
 
 // Different set of buttons in this page
 @Composable
-fun Buttons(title: String, onClick: () -> Unit, backgroundColor: Int) {
+fun Buttons(title: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(0),
+        modifier = Modifier.width(200.dp).padding(bottom =  16.dp),
+        shape = RoundedCornerShape(50),
+        colors = ButtonDefaults.buttonColors(
+            containerColor = Color(242, 252, 138),
+            contentColor = Color(32, 35, 43)
+        )
     ) {
         Text(
-            text = title
+            text = title,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(5.dp)
         )
     }
 }
