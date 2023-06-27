@@ -1,13 +1,16 @@
 package com.example.chatconnect.view
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -122,27 +125,32 @@ fun TextFormField(value: String, onValueChange: (String) -> Unit, label: String,
 @Composable
 fun SingleMessage(message: String, isCurrentUser: Boolean) {
     val cardColor = if(isCurrentUser) Color(183, 133, 245) else Color(22, 23, 27)
-    Card(
-        shape = RoundedCornerShape(16.dp),
+    val cardArrangeemnt = if (isCurrentUser) Arrangement.End else Arrangement.Start
+    val cardAlignment = if (isCurrentUser) Alignment.End else Alignment.Start
 
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(top = 5.dp),
+        horizontalArrangement = cardArrangeemnt
     ) {
-        Column(
-            Modifier.background(cardColor)
-                .padding(start = 5.dp)
-                .fillMaxWidth()
-        ) {
-            Text(
-                text = message,
-                textAlign =
-                if (isCurrentUser)
-                    TextAlign.End
-                else
-                    TextAlign.Start,
-                modifier = Modifier
-                    .padding(16.dp),
-                color= Color(221, 208, 242),
-                fontSize = 20.sp,
-            )
+        Card(
+            shape = RoundedCornerShape(16.dp)
+            ) {
+            Column(
+                Modifier
+                    .background(cardColor)
+                    .widthIn(0.dp,300.dp),
+                horizontalAlignment = cardAlignment
+            ) {
+                Text(
+                    text = message,
+                    modifier = Modifier
+                        .padding(16.dp),
+                    color = Color(221, 208, 242),
+                    fontSize = 20.sp,
+                )
+            }
         }
     }
 }

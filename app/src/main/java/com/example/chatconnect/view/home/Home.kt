@@ -11,7 +11,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -28,11 +27,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.chatconnect.Constants
-import com.example.chatconnect.view.Appbar
 import com.example.chatconnect.view.SingleMessage
 
 
@@ -87,6 +84,7 @@ fun HomeView(
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 focusedBorderColor = Color(218, 199, 244) ,
                 unfocusedBorderColor = Color(218, 199, 244),
+                textColor = Color(221, 208, 242)
             ),
             maxLines = 1,
             modifier = Modifier
@@ -118,6 +116,7 @@ fun HomeView(
 @Composable
 fun AppbarMain(title: String) {
     TopAppBar(
+        scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(),
         title = {
             Text(text = title,
                 color= Color(221, 208, 242)
