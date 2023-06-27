@@ -17,10 +17,14 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Green
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
@@ -65,7 +69,8 @@ fun Buttons(title: String, onClick: () -> Unit) {
 fun Appbar(title: String, action: () -> Unit) {
     TopAppBar(
         title = {
-            Text(text = title)
+            Text(text = title,
+                color=Color(221, 208, 242))
         },
         navigationIcon = {
             IconButton(
@@ -73,10 +78,12 @@ fun Appbar(title: String, action: () -> Unit) {
             ) {
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Back button"
+                    contentDescription = "Back button",
+                    tint = Color(221, 208, 242)
                 )
             }
-        }
+        },
+        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color(32, 35, 43))
     )
 }
 
@@ -88,9 +95,13 @@ fun TextFormField(value: String, onValueChange: (String) -> Unit, label: String,
         onValueChange = onValueChange,
         label = {
             Text(
-                label
+                label,
+                color= Color(221, 208, 242)
             )
         },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            focusedBorderColor = Color(34, 34, 43) ,
+            unfocusedBorderColor = Color(218, 199, 244)),
         maxLines = 1,
         modifier = Modifier
             .padding(horizontal = 20.dp, vertical = 5.dp)

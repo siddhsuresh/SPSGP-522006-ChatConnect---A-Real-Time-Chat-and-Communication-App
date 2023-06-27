@@ -1,6 +1,6 @@
 package com.example.chatconnect.view.register
 
-import android.graphics.Color
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +13,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -21,11 +22,6 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.chatconnect.view.Appbar
 import com.example.chatconnect.view.Buttons
 import com.example.chatconnect.view.TextFormField
-
-/**
- * The Register view which will be helpful for the user to register themselves into
- * our database and go to the home screen to see and send messages.
- */
 
 @Composable
 fun RegisterView(
@@ -39,7 +35,7 @@ fun RegisterView(
 
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize().background(Color(91, 82, 101)),
     ) {
         if (loading) {
             CircularProgressIndicator()
@@ -53,6 +49,7 @@ fun RegisterView(
                 title = "Register",
                 action = back
             )
+            Spacer(modifier = Modifier.height(20.dp))
             TextFormField(
                 value = email,
                 onValueChange = { registerViewModel.updateEmail(it) },
@@ -67,7 +64,7 @@ fun RegisterView(
                 keyboardType = KeyboardType.Password,
                 visualTransformation = PasswordVisualTransformation()
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(30.dp))
             Buttons(
                 title = "Register",
                 onClick = { registerViewModel.registerUser(home = home) },
