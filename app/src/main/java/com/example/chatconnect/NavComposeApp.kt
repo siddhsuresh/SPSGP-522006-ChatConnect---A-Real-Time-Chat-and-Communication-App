@@ -25,9 +25,9 @@ fun NavComposeApp() {
         NavHost(
             navController = navController,
             startDestination =
-            if (FirebaseAuth.getInstance().currentUser != null)
-                Home
-            else
+//            if (FirebaseAuth.getInstance().currentUser != null)
+//                Home
+//            else
                 AuthenticationOption
         ) {
             composable(AuthenticationOption) {
