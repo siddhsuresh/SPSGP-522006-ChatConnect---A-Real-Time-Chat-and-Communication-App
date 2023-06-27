@@ -1,5 +1,6 @@
 package com.example.chatconnect.view.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -10,21 +11,28 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.chatconnect.Constants
+import com.example.chatconnect.view.Appbar
 import com.example.chatconnect.view.SingleMessage
 
 
@@ -39,10 +47,15 @@ fun HomeView(
     )
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(32, 35, 43)),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Bottom
     ) {
+        AppbarMain(
+            title = "ChatConnect"
+        )
         LazyColumn(
             modifier = Modifier
                 .fillMaxWidth()
@@ -67,9 +80,14 @@ fun HomeView(
             },
             label = {
                 Text(
-                    "Type Your Message"
+                    "Type Your Message",
+                    color= Color(221, 208, 242)
                 )
             },
+            colors = TextFieldDefaults.outlinedTextFieldColors(
+                focusedBorderColor = Color(218, 199, 244) ,
+                unfocusedBorderColor = Color(218, 199, 244),
+            ),
             maxLines = 1,
             modifier = Modifier
                 .padding(horizontal = 15.dp, vertical = 1.dp)
@@ -87,10 +105,35 @@ fun HomeView(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Send,
-                        contentDescription = "Send Button"
+                        contentDescription = "Send Button",
+                        tint = Color(221, 208, 242)
                     )
                 }
             }
         )
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AppbarMain(title: String) {
+    TopAppBar(
+        title = {
+            Text(text = title,
+                color= Color(221, 208, 242)
+            )
+        },
+//        navigationIcon = {
+//            IconButton(
+//                onClick = action
+//            ) {
+//                Icon(
+//                    imageVector = Icons.Filled.ArrowBack,
+//                    contentDescription = "Back button",
+//                    tint = Color(221, 208, 242)
+//                )
+//            }
+//        },
+        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color(23, 23, 29))
+    )
 }

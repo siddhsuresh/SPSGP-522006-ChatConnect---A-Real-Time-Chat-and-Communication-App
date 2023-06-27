@@ -1,10 +1,14 @@
 package com.example.chatconnect.view
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -21,10 +25,9 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Green
-import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
@@ -48,7 +51,9 @@ fun Title(title: String) {
 fun Buttons(title: String, onClick: () -> Unit) {
     Button(
         onClick = onClick,
-        modifier = Modifier.width(200.dp).padding(bottom =  16.dp),
+        modifier = Modifier
+            .width(200.dp)
+            .padding(bottom = 16.dp),
         shape = RoundedCornerShape(50),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color(242, 252, 138),
@@ -116,21 +121,28 @@ fun TextFormField(value: String, onValueChange: (String) -> Unit, label: String,
 
 @Composable
 fun SingleMessage(message: String, isCurrentUser: Boolean) {
+    val cardColor = if(isCurrentUser) Color(183, 133, 245) else Color(22, 23, 27)
     Card(
         shape = RoundedCornerShape(16.dp),
-//        backgroundColor = if (isCurrentUser) MaterialTheme.colors.primary else Color.White
+
     ) {
-        Text(
-            text = message,
-            textAlign =
-            if (isCurrentUser)
-                TextAlign.End
-            else
-                TextAlign.Start,
-            modifier = Modifier
+        Column(
+            Modifier.background(cardColor)
+                .padding(start = 5.dp)
                 .fillMaxWidth()
-                .padding(16.dp),
-            color = androidx.compose.ui.graphics.Color.Red
-        )
+        ) {
+            Text(
+                text = message,
+                textAlign =
+                if (isCurrentUser)
+                    TextAlign.End
+                else
+                    TextAlign.Start,
+                modifier = Modifier
+                    .padding(16.dp),
+                color= Color(221, 208, 242),
+                fontSize = 20.sp,
+            )
+        }
     }
 }
