@@ -124,7 +124,7 @@ fun TextFormField(value: String, onValueChange: (String) -> Unit, label: String,
 
 @Composable
 fun SingleMessage(message: String, isCurrentUser: Boolean) {
-    val cardColor = if(isCurrentUser) Color(183, 133, 245) else Color(22, 23, 27)
+    val cardColor = if(isCurrentUser) Color(91, 82, 101) else Color(22, 23, 27)
     val cardArrangeemnt = if (isCurrentUser) Arrangement.End else Arrangement.Start
     val cardAlignment = if (isCurrentUser) Alignment.End else Alignment.Start
 

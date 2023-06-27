@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Send
@@ -75,6 +76,7 @@ fun HomeView(
             onValueChange = {
                 homeViewModel.updateMessage(it)
             },
+            shape = RoundedCornerShape(16.dp),
             label = {
                 Text(
                     "Type Your Message",
